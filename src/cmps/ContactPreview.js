@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default class ContactPreview extends Component {
+export default function ContactPreview(props) {
 
-    render() {
-        const { contact } = this.props
+        const { contact } = props
         return (
-            <Link to={"/contact/" + contact._id}>
-                <li className="contact-line" key={contact._id}>
+            <Link className="App-link" to={"/contact/" + contact._id}>
+                <div className="contact-line" key={contact._id}>
                     <div>{contact.name}</div>
-                </li>
+                </div>
             </Link>);
-    }
 }
