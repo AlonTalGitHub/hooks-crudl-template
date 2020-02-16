@@ -6,8 +6,6 @@ export default {
   getEmptyContact
 }
 
-
-
 const contacts = [
   {
     "_id": "5a56640269f443a5d64b32ca",
@@ -157,16 +155,20 @@ function getContactById (id) {
 
 function deleteContact(id) {
   return new Promise((resolve, reject) => { 
+    console.log(id);
     const index = contacts.findIndex( contact => contact._id === id)
     if (index !== -1) {
       contacts.splice(index, 1)
     }
-
+    console.log(contacts);
+    
     resolve(contacts)
   })
 }
 
 function _updateContact(contact) {
+  console.log('I was here all along you idiot');
+  
   return new Promise((resolve, reject) => { 
     const index = contacts.findIndex( c => contact._id === c._id)
     if (index !== -1) {
@@ -179,7 +181,9 @@ function _updateContact(contact) {
 function _addContact(contact) {
   return new Promise((resolve, reject) => { 
     contact._id = _makeId()
+    console.log('added contact: ', contact)
     contacts.push(contact)
+    console.log('The contacts: ', contacts);
     resolve(contact)
   })
 }
@@ -204,8 +208,6 @@ function filter (term) {
            contact.email.toLocaleLowerCase().includes(term)
   })
 }
-
-
 
 function _makeId(length = 10) {
   var txt = ''
